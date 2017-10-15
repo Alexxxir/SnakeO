@@ -3,5 +3,3 @@ public class Apple extends PenetrableObject {
         super(coordinate, field);
     }
 }
-//11
-//231
