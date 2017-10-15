@@ -12,14 +12,14 @@ final public class Coordinate {
         this.y = coordinate.y;
     }
 
-    public Coordinate GetNeighborCoordinate(Direction direction) {
-        if (direction == Direction.Up)
+    public Coordinate getNeighborCoordinate(Direction direction) {
+        if (direction == Direction.UpA)
             return new Coordinate(this.x, this.y + 1);
-        else if (direction == Direction.Down)
+        else if (direction == Direction.DownA)
             return new Coordinate(this.x, this.y - 1);
-        else if (direction == Direction.Left)
+        else if (direction == Direction.LeftA)
             return new Coordinate(this.x - 1, this.y);
-        else if (direction == Direction.Right)
+        else if (direction == Direction.RightA)
             return new Coordinate(this.x + 1, this.y);
         else
             return this;

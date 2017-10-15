@@ -6,40 +6,40 @@ public class SnakeTest {
 	@Test
 	public void TestIsInFrontWall() {
 		Field field = new Field(100, 1);
-		Snake snake = new Snake(new Coordinate(0, 0), field);
-		new Wall(new Coordinate(1, 0), field);
-		assertTrue(snake.IsInFrontWall(field));
+		Snake snake = new Snake(new Coordinate(1, 0), field);
+		new Wall(new Coordinate(2, 0), field);
+		assertTrue(snake.isInFrontWall(field));
 
 	}
 
 	@Test
 	public void TestMoveWithoutEating() {
 		Field field = new Field(100, 1);
-		Snake snake = new Snake(new Coordinate(0, 0), field);
+		Snake snake = new Snake(new Coordinate(1, 0), field);
 		for (int i = 1; i < field.getLengthX() - 1; i++) {
-			snake.Move(field);
-			assertEquals(snake.size(), 1);
+			snake.move(field);
+			assertEquals(snake.size(), 2);
 		}
 
 		for (int i = 0; i < field.getLengthX() - 2; i++) {
-			assertTrue(field.GetObjectOnField(new Coordinate(i, 0)) instanceof EmptySpace);
+			assertTrue(field.getObjectOnField(new Coordinate(i, 0)) instanceof EmptySpace);
 		}
 	}
 
 	@Test
 	public void TestMoveWithEating() {
 		Field field = new Field(100, 1);
-		Coordinate startCoordinate = new Coordinate(1, 0);
-		Snake snake = new Snake(new Coordinate(0, 0), field);
+		Coordinate startCoordinate = new Coordinate(2, 0);
+		Snake snake = new Snake(new Coordinate(1, 0), field);
 		for (int i = 1; i < field.getLengthX() - 1; i++) {
 			new Apple(startCoordinate, field);
-			snake.Move(field);
-			assertEquals(snake.size(), i + 1);
-			startCoordinate = startCoordinate.GetNeighborCoordinate(Direction.Right);
+			snake.move(field);
+			assertEquals(snake.size(), i + 2);
+			startCoordinate = startCoordinate.getNeighborCoordinate(Direction.RightA);
 		}
 
 		for (int i = 0; i < field.getLengthX() - 1; i++) {
-			assertTrue(field.GetObjectOnField(new Coordinate(i, 0)) instanceof PieceOfSnake);
+			assertTrue(field.getObjectOnField(new Coordinate(i, 0)) instanceof PieceOfSnake);
 		}
 	}
 

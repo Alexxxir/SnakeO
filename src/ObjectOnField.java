@@ -3,7 +3,7 @@ public class ObjectOnField {
 
 	ObjectOnField(Coordinate coordinate, Field field) {
 		this.coordinate = coordinate;
-		field.AddObjectOnField(this);
+		field.addObjectOnField(this);
 	}
 
     protected int getX() {

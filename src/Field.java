@@ -9,36 +9,32 @@ public class Field {
                 this.field[x][y] = new EmptySpace(new Coordinate(x, y), this);
 	}
 		
-	public int getLengthX()
-	{
+	public int getLengthX() {
 		return this.field.length;
 	}
 	
-	public int getLengthY()
-	{
+	public int getLengthY() {
 		return this.field[0].length;
 	}
     
-    public void SurroundedByWall()
-    {
+	public void surroundedByWall() {
     	for (int i = 0; i < this.getLengthX(); i++)
     		for (int j = 0; j < this.getLengthY(); j++)
     		{
     			if (i==0 || j == 0 || i == this.getLengthX() - 1 || j == this.getLengthY() - 1)
     			{
     				Wall wall = new Wall(new Coordinate(i, j), this);
-    				AddObjectOnField(wall);
+    				addObjectOnField(wall);
     			}
     		}
-    }
+		
+	}
 
-	public ObjectOnField GetObjectOnField(Coordinate coordinate)
-    {
+	public ObjectOnField getObjectOnField(Coordinate coordinate) {
         return field[coordinate.x][coordinate.y];
     }
 
-    public boolean CheckEndGame()
-    {
+    public boolean checkEndGame() {
         for (int i = 0; i < this.getLengthX(); i++)
             for (int j = 0; j < this.getLengthY(); j++)
                 if (field[i][j] instanceof EmptySpace)
@@ -46,20 +42,18 @@ public class Field {
         return true;
     }
     
-    public boolean CheckEnvirons(Coordinate coordinate)
-    {
+    public boolean checkEnvirons(Coordinate coordinate) {
     	int count = 0;
     	for (int x = coordinate.x - 1; x < coordinate.x + 2; x++)
     		for (int y = coordinate.y - 1; y <  coordinate.y + 2; y++)
     		{
-    			if (!(GetObjectOnField(new Coordinate(x, y)) instanceof EmptySpace))
+    			if (!(getObjectOnField(new Coordinate(x, y)) instanceof EmptySpace))
 					count++;
     		}
     	return count <= 1;
     }
     
-    public Coordinate GetRandomCoordinateWithEmptySpace()
-    {
+    public Coordinate getRandomCoordinateWithEmptySpace() {
     	Random random = new Random();
     	int randomX;
         int randomY;
@@ -72,47 +66,45 @@ public class Field {
         return new Coordinate(randomX, randomY);
     }
     
-    public void AddRandomWall()
-    {
+    public void addRandomWall() {
     	int count = this.getLengthX() * this.getLengthY() * 2;
     	while (count > 0)
     	{
-        	if (CheckEndGame())
+        	if (this.checkEndGame())
         		return;
-	        Coordinate emptyCoordinate = this.GetRandomCoordinateWithEmptySpace();
-	        if (CheckEnvirons(emptyCoordinate))
+	        Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
+	        if (checkEnvirons(emptyCoordinate))
 	        {
 	        	Wall wall = new Wall(emptyCoordinate, this);
-				AddObjectOnField(wall);
+				addObjectOnField(wall);
 	        }
 			count--;
     	}   
     }
 
-    public void AddApple()
-    {
-    	if (CheckEndGame())
+    public void addApple() {
+    	if (this.checkEndGame())
     		return;
-    	Coordinate emptyCoordinate = this.GetRandomCoordinateWithEmptySpace();
+    	Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
         new Apple(emptyCoordinate, this);
     }
 
-    public void AddSnake()
-    {
+    public void addSnake() {
     	Coordinate emptyCoordinate;
     	do
     	{
-    		emptyCoordinate = this.GetRandomCoordinateWithEmptySpace();
+    		emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
     	}
-    	while(!(this.GetObjectOnField(emptyCoordinate.GetNeighborCoordinate(Direction.Left)) instanceof EmptySpace));
+    	while(!(this.getObjectOnField(emptyCoordinate.getNeighborCoordinate(Direction.LeftA)) instanceof EmptySpace));
+    	Snake snake = new Snake(emptyCoordinate, this);
     	
     }
     
-    public void AddObjectOnField(ObjectOnField objectOnField) {
+    public void addObjectOnField(ObjectOnField objectOnField) {
         field[objectOnField.coordinate.x][objectOnField.coordinate.y] = objectOnField;
     }
 
-    public void DeleteObjectOnField(Coordinate coordinate) {
+    public void deleteObjectOnField(Coordinate coordinate) {
         field[coordinate.x][coordinate.y] = new EmptySpace(coordinate, this);
     }
 }
