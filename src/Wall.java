@@ -3,4 +3,5 @@ public class Wall extends ImpenetrableObject{
 		super(coordinate, field);
 	}
 //lol
+	//ûפגפûפא
 }

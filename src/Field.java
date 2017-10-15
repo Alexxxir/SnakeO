@@ -22,9 +22,9 @@ public class Field {
     public void SurroundedByWall()
     {
     	for (int i = 0; i < this.getLengthX(); i++)
-    		for (int j = 0; j < this.getLengthX(); j++)
+    		for (int j = 0; j < this.getLengthY(); j++)
     		{
-    			if (i==0 || j == 0 || i == this.getLengthX() - 1 || j == this.getLengthY())
+    			if (i==0 || j == 0 || i == this.getLengthX() - 1 || j == this.getLengthY() - 1)
     			{
     				Wall wall = new Wall(new Coordinate(i, j), this);
     				AddObjectOnField(wall);
@@ -48,52 +48,20 @@ public class Field {
     
     public boolean CheckEnvirons(Coordinate coordinate)
     {
+    	int count = 0;
     	for (int x = coordinate.x - 1; x < coordinate.x + 2; x++)
     		for (int y = coordinate.y - 1; y <  coordinate.y + 2; y++)
     		{
     			if (!(GetObjectOnField(new Coordinate(x, y)) instanceof EmptySpace))
-					return false;
+					count++;
     		}
-    	return true;
+    	return count <= 1;
     }
     
-    public void AddRandomWall(int count)
+    public Coordinate GetRandomCoordinateWithEmptySpace()
     {
-    	while (count > 0)
-    	{
-        	if (CheckEndGame())
-        		return;
-        	boolean flag = false;
-        	for (int i = 1; i < getLengthX() - 1; i++)
-        		for (int j = 1; j < getLengthY() - 1; j++)
-        		{
-        			if (CheckEnvirons(new Coordinate(i, j)))
-        				flag = true;
-        		}
-        	if (!flag)
-        		return;
-	        Random random = new Random();
-	        int randomX;
-	        int randomY;
-	        do
-	        {
-	            randomX = random.nextInt(this.getLengthX() - 1);
-	            randomY = random.nextInt(this.getLengthY() - 1);
-	        }
-	        while (!(this.field[randomX][randomY] instanceof EmptySpace));
-	        if (CheckEnvirons(new Coordinate(randomX, randomY)))
-	        {
-	        	Wall wall = new Wall(new Coordinate(randomX, randomY), this);
-				AddObjectOnField(wall);
-				count--;
-	        }
-    	}   
-    }
-
-    public void AddApple()
-    {
-        Random random = new Random();
-        int randomX;
+    	Random random = new Random();
+    	int randomX;
         int randomY;
         do
         {
@@ -101,9 +69,45 @@ public class Field {
             randomY = random.nextInt(this.getLengthY() - 1);
         }
         while (!(this.field[randomX][randomY] instanceof EmptySpace));
-        new Apple(new Coordinate(randomX, randomY), this);
+        return new Coordinate(randomX, randomY);
+    }
+    
+    public void AddRandomWall()
+    {
+    	int count = this.getLengthX() * this.getLengthY() * 2;
+    	while (count > 0)
+    	{
+        	if (CheckEndGame())
+        		return;
+	        Coordinate emptyCoordinate = this.GetRandomCoordinateWithEmptySpace();
+	        if (CheckEnvirons(emptyCoordinate))
+	        {
+	        	Wall wall = new Wall(emptyCoordinate, this);
+				AddObjectOnField(wall);
+	        }
+			count--;
+    	}   
     }
 
+    public void AddApple()
+    {
+    	if (CheckEndGame())
+    		return;
+    	Coordinate emptyCoordinate = this.GetRandomCoordinateWithEmptySpace();
+        new Apple(emptyCoordinate, this);
+    }
+
+    public void AddSnake()
+    {
+    	Coordinate emptyCoordinate;
+    	do
+    	{
+    		emptyCoordinate = this.GetRandomCoordinateWithEmptySpace();
+    	}
+    	while(!(this.GetObjectOnField(emptyCoordinate.GetNeighborCoordinate(Direction.Left)) instanceof EmptySpace));
+    	
+    }
+    
     public void AddObjectOnField(ObjectOnField objectOnField) {
         field[objectOnField.coordinate.x][objectOnField.coordinate.y] = objectOnField;
     }
