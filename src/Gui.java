@@ -40,22 +40,34 @@ public class Gui extends JPanel implements ActionListener{
     	this.images.put("SnakeHead", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/snake_part.jpg").getImage()}));
     	this.images.put("SnakeTail", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/snake_part.jpg").getImage()}));
     	this.images.put("SnakeTwist", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/snake_part.jpg").getImage()}));
-       /* String fileName;
-        ObjectOnField fieldObject = this.field.getObjectOnField(coordinate);
-        if (fieldObject instanceof Apple)
-            fileName = "images/red_apple.png";
-        else if (fieldObject instanceof Wall)
-            fileName = "images/wall.jpg";
-        else if (fieldObject instanceof PieceOfSnake) {
-        	fileName = "images/snake_part.jpg";
-        }
-        else
-        	fileName = "images/grass.jpg";
-        BufferedImage img = ImageIO.read(new File(fileName));
-        rotateImage(img, 90);*/
+    	
+   	    BufferedImage img = ImageIO.read(new File("images/snake_head.png"));
+   	    Map<Direction, Image> mapSnakeHead = new HashMap();
+        mapSnakeHead.put(Direction.Down, rotateImage(img, 90));
+        mapSnakeHead.put(Direction.Left, rotateImage(img, 180));
+        mapSnakeHead.put(Direction.Up, rotateImage(img, 270));
+        mapSnakeHead.put(Direction.Right, rotateImage(img, 0));
+        this.images.put("SnakeHead", mapSnakeHead);
+      /* String fileName;
+       ObjectOnField fieldObject = this.field.getObjectOnField(coordinate);
+       if (fieldObject instanceof Apple)
+           fileName = "images/red_apple.png";
+       else if (fieldObject instanceof Wall)
+           fileName = "images/wall.jpg";
+       else if (fieldObject instanceof PieceOfSnake) {
+       	fileName = "images/snake_part.jpg";
+       }
+       else
+       	fileName = "images/grass.jpg";
+       BufferedImage img = ImageIO.read(new File(fileName));
+       rotateImage(img, 90);*/
     }
     
     private Image getImage(ObjectOnField objectOnField) {
+    	if (objectOnField.toString() == "SnakeHead") {
+    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+    		return this.images.get(objectOnField.toString()).get(pieceOfSnake.direction);
+    	}
 		return this.images.get(objectOnField.toString()).get(Direction.None);
     }
     
