@@ -35,7 +35,7 @@ public class SnakeTest {
 			new Apple(startCoordinate, field);
 			snake.move(field);
 			assertEquals(snake.size(), i + 2);
-			startCoordinate = startCoordinate.getNeighborCoordinate(Direction.RightA);
+			startCoordinate = startCoordinate.getNeighborCoordinate(Direction.Down);
 		}
 
 		for (int i = 0; i < field.getLengthX() - 1; i++) {

@@ -1,6 +1,6 @@
 public class ObjectOnField {
 	protected Coordinate coordinate;
-
+	
 	ObjectOnField(Coordinate coordinate, Field field) {
 		this.coordinate = coordinate;
 		field.addObjectOnField(this);

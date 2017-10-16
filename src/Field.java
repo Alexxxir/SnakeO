@@ -2,8 +2,9 @@ import java.util.Random;
 
 public class Field {
 	private ObjectOnField[][] field;
+	public Snake snake;
 	Field(int weidht, int height){
-	    this.field = new ObjectOnField[weidht][height];
+	    this.field = new ObjectOnField[height][weidht];
         for (int x = 0; x < this.getLengthX(); x++)
             for (int y = 0; y < this.getLengthY(); y++)
                 this.field[x][y] = new EmptySpace(new Coordinate(x, y), this);
@@ -53,7 +54,7 @@ public class Field {
     	return count <= 1;
     }
     
-    public Coordinate getRandomCoordinateWithEmptySpace() {
+    private Coordinate getRandomCoordinateWithEmptySpace() {
     	Random random = new Random();
     	int randomX;
         int randomY;
@@ -89,14 +90,15 @@ public class Field {
         new Apple(emptyCoordinate, this);
     }
 
-    public void addSnake() {
+    public Snake addSnake() {
     	Coordinate emptyCoordinate;
     	do
     	{
     		emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
     	}
-    	while(!(this.getObjectOnField(emptyCoordinate.getNeighborCoordinate(Direction.LeftA)) instanceof EmptySpace));
-    	Snake snake = new Snake(emptyCoordinate, this);
+    	while(!(this.getObjectOnField(emptyCoordinate.getNeighborCoordinate(Direction.Left)) instanceof EmptySpace));
+    	emptyCoordinate = new Coordinate(2, 1);
+    	return new Snake(emptyCoordinate, this);
     	
     }
     

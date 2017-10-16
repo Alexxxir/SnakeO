@@ -5,8 +5,8 @@ public class Snake {
     private int size;
 
     Snake(Coordinate coordinate, Field field) {
-        this.direction = Direction.RightA;
-        PieceOfSnake newPiece = new PieceOfSnake(coordinate.getNeighborCoordinate(Direction.LeftA), field, this.direction, null);
+        this.direction = Direction.Right;
+        PieceOfSnake newPiece = new PieceOfSnake(coordinate.getNeighborCoordinate(Direction.Up), field, this.direction, null);
         this.tail = newPiece;
         this.head = newPiece;
         this.size = 1;
@@ -41,11 +41,18 @@ public class Snake {
     }
 
     public void move(Field field) {
+    	if (this.isInFrontWall(field))
+    		return;
     	boolean needToGrow = this.getNeighborObject(field) instanceof Apple;
         this.push(field);
         if (!(needToGrow)) {
             this.pop(field);
         }
+    }
+    
+    public void setDirection(Direction direction) {
+    	if (this.direction.ordinal() + direction.ordinal() != 5)
+    		this.direction = direction;
     }
 
 }
