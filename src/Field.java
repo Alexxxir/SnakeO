@@ -2,7 +2,6 @@ import java.util.Random;
 
 public class Field {
 	private ObjectOnField[][] field;
-	public Snake snake;
 	Field(int weidht, int height){
 	    this.field = new ObjectOnField[height][weidht];
         for (int x = 0; x < this.getLengthX(); x++)
@@ -35,7 +34,7 @@ public class Field {
         return field[coordinate.x][coordinate.y];
     }
 
-    public boolean checkEndGame() {
+    public boolean checkEmptySpace() {
         for (int i = 0; i < this.getLengthX(); i++)
             for (int j = 0; j < this.getLengthY(); j++)
                 if (field[i][j] instanceof EmptySpace)
@@ -71,7 +70,7 @@ public class Field {
     	int count = this.getLengthX() * this.getLengthY() * 2;
     	while (count > 0)
     	{
-        	if (this.checkEndGame())
+        	if (this.checkEmptySpace())
         		return;
 	        Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
 	        if (checkEnvirons(emptyCoordinate))
@@ -82,9 +81,16 @@ public class Field {
 			count--;
     	}   
     }
+    
+    public void appleGenerator() {
+        Random random = new Random();
+        int randomInt = random.nextInt(10);
+        if (randomInt > 8)
+        	this.addApple();
+    }
 
     public void addApple() {
-    	if (this.checkEndGame())
+    	if (this.checkEmptySpace())
     		return;
     	Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
         new Apple(emptyCoordinate, this);

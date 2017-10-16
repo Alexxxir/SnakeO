@@ -24,6 +24,13 @@ public class Snake {
         this.head = newPiece;
         this.size += 1;
     }
+    
+    public boolean checkEndGame(Field field) {
+    	return ((field.getObjectOnField(this.head.coordinate.getNeighborCoordinate(Direction.Up)) instanceof ImpenetrableObject) && 
+		    	(field.getObjectOnField(this.head.coordinate.getNeighborCoordinate(Direction.Down)) instanceof ImpenetrableObject) && 
+		    	(field.getObjectOnField(this.head.coordinate.getNeighborCoordinate(Direction.Left)) instanceof ImpenetrableObject) && 
+		    	(field.getObjectOnField(this.head.coordinate.getNeighborCoordinate(Direction.Right)) instanceof ImpenetrableObject));
+    }
 
     private void pop(Field field) {
         this.tail.nextPiece.lastPiece = null;

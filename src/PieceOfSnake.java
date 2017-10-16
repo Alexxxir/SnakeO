@@ -6,7 +6,7 @@ public class PieceOfSnake extends ImpenetrableObject {
 			return "SnakeTail";
 		if (this.nextPiece == null)
 			return "SnakeHead";
-		if (this.lastPiece.direction != this.direction)
+		if (this.nextPiece.direction != this.direction)
 			return "SnakeTwist";
 		return "PieceOfSnake";
 	}
