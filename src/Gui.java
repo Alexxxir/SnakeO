@@ -37,8 +37,6 @@ public class Gui extends JPanel implements ActionListener{
     	this.images.put("EmptySpace", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/grass.jpg").getImage()}));
     	this.images.put("Apple", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/red_apple.png").getImage()}));
     	this.images.put("Wall", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/wall.jpg").getImage()}));
-    	this.images.put("PieceOfSnake", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/snake_part.jpg").getImage()}));
-    	this.images.put("SnakeTwist", createMap(new Direction[] {Direction.None}, new Image[] {new ImageIcon("images/snake_part.jpg").getImage()}));
     	
    	    BufferedImage imgHead = ImageIO.read(new File("images/snake_head.png"));
    	    Map<Direction, Image> mapSnakeHead = new HashMap();
@@ -61,18 +59,21 @@ public class Gui extends JPanel implements ActionListener{
    	    mapSnakeTwist.put(Direction.Left, rotateImage(imgTwist, 270));
    		mapSnakeTwist.put(Direction.Right, rotateImage(imgTwist, 0));
         this.images.put("SnakeTwist", mapSnakeTwist);
+   	    BufferedImage imgPart = ImageIO.read(new File("images/snake_part.png"));
+   	    Map<Direction, Image> mapSnakePart = new HashMap();
+   	    mapSnakePart.put(Direction.Up, rotateImage(imgPart, 90));
+   	    mapSnakePart.put(Direction.Right, rotateImage(imgPart, 0));
+        this.images.put("PieceOfSnake", mapSnakePart);
     }
     
     private Image getImage(ObjectOnField objectOnField) {
     	if (objectOnField.toString() == "SnakeHead") {
     		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
     		return this.images.get(objectOnField.toString()).get(pieceOfSnake.direction);
-    	}
-    	if (objectOnField.toString() == "SnakeTail") {
+    	} if (objectOnField.toString() == "SnakeTail") {
     		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
     		return this.images.get(objectOnField.toString()).get(pieceOfSnake.nextPiece.direction);
-    	}
-    	if (objectOnField.toString() == "SnakeTwist") {
+    	} if (objectOnField.toString() == "SnakeTwist") {
     		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
     		if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Right)
     			return this.images.get(objectOnField.toString()).get(Direction.Right);
@@ -91,7 +92,15 @@ public class Gui extends JPanel implements ActionListener{
     		if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Left)
     			return this.images.get(objectOnField.toString()).get(Direction.Up);
     		return this.images.get(objectOnField.toString()).get(pieceOfSnake.direction);
+    	} if (objectOnField.toString() == "PieceOfSnake") {
+    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+    		if (pieceOfSnake.direction == Direction.Down || pieceOfSnake.direction == Direction.Up) {
+    			return this.images.get(objectOnField.toString()).get(Direction.Up);
+    		} else {
+    			return this.images.get(objectOnField.toString()).get(Direction.Right);
+    		}
     	}
+    	
 		return this.images.get(objectOnField.toString()).get(Direction.None);
     }
     
