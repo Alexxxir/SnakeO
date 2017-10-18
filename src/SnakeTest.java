@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 public class SnakeTest {
 	@Test
 	public void TestIsInFrontWall() {
-		Field field = new Field(100, 1);
-		Snake snake = new Snake(new Coordinate(1, 0), field);
-		new Wall(new Coordinate(2, 0), field);
+		Field field = new Field(4, 4);
+		field.surroundedByWall();
+		Snake snake = new Snake(new Coordinate(1, 1), field);
 		assertTrue(snake.isInFrontWall(field));
 
 	}

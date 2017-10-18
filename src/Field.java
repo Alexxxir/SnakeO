@@ -53,7 +53,7 @@ public class Field {
     	return count <= 1;
     }
     
-    private Coordinate getRandomCoordinateWithEmptySpace() {
+    public Coordinate getRandomCoordinateWithEmptySpace() {
     	Random random = new Random();
     	int randomX;
         int randomY;
