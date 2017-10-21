@@ -2,15 +2,12 @@ package graphics;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
-
 import game.Coordinate;
 import game.Direction;
 import game.Field;
 import game.Game;
 import objects.ObjectOnField;
 import objects.PieceOfSnake;
-import objects.Wall;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,8 +23,8 @@ import static java.awt.image.AffineTransformOp.TYPE_BILINEAR;
 
 public class Gui extends JPanel implements ActionListener{
     private Map<String, Map<Direction, Image>> images = new HashMap<String, Map<Direction, Image>>();
-    public final int fps = 8;
-    Timer timer = new Timer(1000/fps, this);
+    private final int fps = 8;
+    private Timer timer = new Timer(1000/fps, this);
     private Map<Direction, Image> createMap(Direction[] directions, Image[] images) {
         Map<Direction, Image> map = new HashMap<Direction, Image>();
         for (int i = 0; i < directions.length; i++)

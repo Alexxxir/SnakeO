@@ -1,7 +1,7 @@
 package game;
 import java.util.Random;
 
-import objects.DisposableObject;
+import objects.disposableObjects.DisposableObject;
 import objects.EmptySpace;
 import objects.ObjectOnField;
 import objects.Wall;
@@ -39,12 +39,13 @@ public class Field {
         return field[coordinate.x][coordinate.y];
     }
 
-    public boolean checkEmptySpace() {
+    public int countEmptySpace() {
+        int count = 0;
         for (int i = 0; i < this.getLengthX(); i++)
             for (int j = 0; j < this.getLengthY(); j++)
-                if (field[i][j] instanceof EmptySpace)
-                    return false;
-        return true;
+                if (this.getObjectOnField(new Coordinate(i, j)) instanceof EmptySpace)
+                    count += 1;
+        return count;
     }
 
     public boolean checkEnvirons(Coordinate coordinate) {
@@ -62,12 +63,23 @@ public class Field {
         Random random = new Random();
         int randomX;
         int randomY;
-        do
-        {
-            randomX = random.nextInt(this.getLengthX() - 1);
-            randomY = random.nextInt(this.getLengthY() - 1);
+        do {
+            int countWall = 0;
+            do {
+                countWall = 0;
+                randomX = random.nextInt(this.getLengthX() - 2) + 1;
+                randomY = random.nextInt(this.getLengthY() - 2) + 1;
+                for (Direction direction: Direction.values()) {
+                    if (this.getObjectOnField(
+                            new Coordinate(
+                                    randomX, randomY).getNextCoordinate(direction)) instanceof Wall) {
+                        countWall += 1;
+                    }
+                }
+            }
+            while (countWall >= 3);
         }
-        while (!(this.field[randomX][randomY] instanceof EmptySpace));
+        while (!(this.getObjectOnField(new Coordinate(randomX, randomY)) instanceof EmptySpace));
         return new Coordinate(randomX, randomY);
     }
 
@@ -75,7 +87,7 @@ public class Field {
         int count = this.getLengthX() * this.getLengthY() * 2;
         while (count > 0)
         {
-            if (this.checkEmptySpace())
+            if (this.countEmptySpace() == 0)
                 return;
             Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
             if (checkEnvirons(emptyCoordinate))
