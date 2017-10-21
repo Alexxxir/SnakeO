@@ -1,7 +1,26 @@
 public class PieceOfSnake extends ImpenetrableObject {
 	
+    public PieceOfSnake lastPiece;
+    public PieceOfSnake nextPiece;
+    final Direction direction;
+    
+    PieceOfSnake(Coordinate coordinate,
+                 Direction diection, PieceOfSnake lastPiece) {
+        super(coordinate);
+        this.direction = diection;
+        this.lastPiece = lastPiece;
+        this.nextPiece = null;
+        if (lastPiece != null)
+            lastPiece.nextPiece = this;
+    }
+
 	@Override
-	public String toString() {
+    public void toInteractWithSnake(Snake snake, Field field) {
+		super.toInteractWithSnake(snake, field);
+	}
+	
+	@Override
+	public String nameOfTheObject() {
 		if (this.lastPiece == null)
 			return "SnakeTail";
 		if (this.nextPiece == null)
@@ -10,20 +29,4 @@ public class PieceOfSnake extends ImpenetrableObject {
 			return "SnakeTwist";
 		return "PieceOfSnake";
 	}
-	
-    public PieceOfSnake lastPiece;
-    public PieceOfSnake nextPiece;
-    final Direction direction;
-    
-    PieceOfSnake(Coordinate coordinate, Field field,
-                 Direction diection, PieceOfSnake lastPiece) {
-        super(coordinate, field);
-        this.direction = diection;
-        this.lastPiece = lastPiece;
-        this.nextPiece = null;
-        if (lastPiece != null)
-            lastPiece.nextPiece = this;
-    }
-
-
 }

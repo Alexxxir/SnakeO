@@ -1,9 +1,10 @@
 public class EmptySpace extends PenetrableObject {
-	
-	@Override
-	public String toString() {return "EmptySpace";}
-	
-    EmptySpace(Coordinate coordinate, Field field) {
-        super(coordinate, field);
+    EmptySpace(Coordinate coordinate) {
+        super(coordinate);
     }
+    
+	@Override
+	public void toInteractWithSnake(Snake snake, Field field) {
+		super.toInteractWithSnake(snake, field);
+	}
 }

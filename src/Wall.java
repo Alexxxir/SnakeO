@@ -1,9 +1,10 @@
 public class Wall extends ImpenetrableObject{
+	Wall(Coordinate coordinate) {
+		super(coordinate);
+	}
 	
 	@Override
-	public String toString() {return "Wall";}
-	
-	Wall(Coordinate coordinate, Field field) {
-		super(coordinate, field);
+    public void toInteractWithSnake(Snake snake, Field field) {
+		super.toInteractWithSnake(snake, field);
 	}
 }

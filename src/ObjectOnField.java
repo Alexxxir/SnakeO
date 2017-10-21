@@ -1,9 +1,8 @@
-public class ObjectOnField {
+public abstract class ObjectOnField {
 	protected Coordinate coordinate;
 	
-	ObjectOnField(Coordinate coordinate, Field field) {
+	ObjectOnField(Coordinate coordinate) {
 		this.coordinate = coordinate;
-		field.addObjectOnField(this);
 	}
 
     protected int getX() {
@@ -13,5 +12,9 @@ public class ObjectOnField {
 	    return this.coordinate.y;
 	}
 
-
+    public abstract void toInteractWithSnake(Snake snake, Field field);
+    
+	public String nameOfTheObject() {
+		return this.getClass().getName();
+	}
 }

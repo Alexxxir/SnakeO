@@ -1,9 +1,6 @@
-
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -30,17 +27,7 @@ public class Gui extends JPanel implements ActionListener{
 
 
     private void initListOfImages() throws IOException {
-    	this.images.put("EmptySpace",
-    			createMap(new Direction[] {Direction.None},
-    					new Image[] {new ImageIcon("images/grass.jpg").getImage()}));
-    	this.images.put("Apple",
-    			createMap(new Direction[] {Direction.None},
-    					new Image[] {new ImageIcon("images/red_apple.png").getImage()}));
-    	this.images.put("Wall",
-    			createMap(new Direction[] {Direction.None},
-    					new Image[] {new ImageIcon("images/wall.jpg").getImage()}));
-    	
-   	    BufferedImage imgHead = ImageIO.read(new File("images/snake_head.png"));
+   	    BufferedImage imgHead = ImageIO.read(new File("images/SnakeHead.png"));
    	    Map<Direction, Image> mapSnakeHead = new HashMap<Direction, Image>();
         mapSnakeHead.put(Direction.Down, rotateImage(imgHead, 90));
         mapSnakeHead.put(Direction.Left, rotateImage(imgHead, 180));
@@ -48,7 +35,7 @@ public class Gui extends JPanel implements ActionListener{
         mapSnakeHead.put(Direction.Right, rotateImage(imgHead, 0));
         this.images.put("SnakeHead", mapSnakeHead);
         
-   	    BufferedImage imgTail = ImageIO.read(new File("images/snake_tail.png"));
+   	    BufferedImage imgTail = ImageIO.read(new File("images/SnakeTail.png"));
    	    Map<Direction, Image> mapSnakeTail = new HashMap<Direction, Image>();
    	    mapSnakeTail.put(Direction.Up, rotateImage(imgTail, 90));
    	    mapSnakeTail.put(Direction.Right, rotateImage(imgTail, 180));
@@ -56,7 +43,7 @@ public class Gui extends JPanel implements ActionListener{
         mapSnakeTail.put(Direction.Left, rotateImage(imgTail, 0));
         this.images.put("SnakeTail", mapSnakeTail);
         
-   	    BufferedImage imgTwist = ImageIO.read(new File("images/snake_r.png"));
+   	    BufferedImage imgTwist = ImageIO.read(new File("images/SnakeTwist.png"));
    	    Map<Direction, Image> mapSnakeTwist = new HashMap<Direction, Image>();
    	    mapSnakeTwist.put(Direction.Down, rotateImage(imgTwist, 90));
    	    mapSnakeTwist.put(Direction.Up, rotateImage(imgTwist, 180));
@@ -64,7 +51,7 @@ public class Gui extends JPanel implements ActionListener{
    		mapSnakeTwist.put(Direction.Right, rotateImage(imgTwist, 0));
         this.images.put("SnakeTwist", mapSnakeTwist);
         
-   	    BufferedImage imgPart = ImageIO.read(new File("images/snake_part.png"));
+   	    BufferedImage imgPart = ImageIO.read(new File("images/SnakePart.png"));
    	    Map<Direction, Image> mapSnakePart = new HashMap<Direction, Image>();
    	    mapSnakePart.put(Direction.Up, rotateImage(imgPart, 90));
    	    mapSnakePart.put(Direction.Right, rotateImage(imgPart, 0));
@@ -72,46 +59,55 @@ public class Gui extends JPanel implements ActionListener{
     }
     
     private Image getImage(ObjectOnField objectOnField) {
-    	if (objectOnField.toString() == "SnakeHead") {
-    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-    		return this.images.get(objectOnField.toString()).get(pieceOfSnake.direction);
-    	} if (objectOnField.toString() == "SnakeTail") {
-    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-    		return this.images.get(objectOnField.toString()).get(pieceOfSnake.nextPiece.direction);
-    	} if (objectOnField.toString() == "SnakeTwist") {
-    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-    		if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Right)
-    			return this.images.get(objectOnField.toString()).get(Direction.Right);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Up)
-    			return this.images.get(objectOnField.toString()).get(Direction.Right);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Left)
-    			return this.images.get(objectOnField.toString()).get(Direction.Left);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Up)
-    			return this.images.get(objectOnField.toString()).get(Direction.Left);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Right)
-    			return this.images.get(objectOnField.toString()).get(Direction.Down);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Down)
-    			return this.images.get(objectOnField.toString()).get(Direction.Down);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Down)
-    			return this.images.get(objectOnField.toString()).get(Direction.Up);
-    		if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Left)
-    			return this.images.get(objectOnField.toString()).get(Direction.Up);
-    		return this.images.get(objectOnField.toString()).get(pieceOfSnake.direction);
-    	} if (objectOnField.toString() == "PieceOfSnake") {
-    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-    		if (pieceOfSnake.direction == Direction.Down || pieceOfSnake.direction == Direction.Up) {
-    			return this.images.get(objectOnField.toString()).get(Direction.Up);
+    	if (!(objectOnField instanceof PieceOfSnake)) {
+    		Image image = new ImageIcon(String.format("images/%s.png", objectOnField.nameOfTheObject())) .getImage();
+    		if (image.getHeight(null) != -1) {
+    			return image;
     		} else {
-    			return this.images.get(objectOnField.toString()).get(Direction.Right);
-    		}
+    			return new ImageIcon(String.format("images/Undefined.png", objectOnField.nameOfTheObject())) .getImage();
+    		}		
+    	} else {
+	    	if (objectOnField.nameOfTheObject() == "SnakeHead") {
+	    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+	    		return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.direction);
+	    	} if (objectOnField.nameOfTheObject() == "SnakeTail") {
+	    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+	    		return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.nextPiece.direction);
+	    	} if (objectOnField.nameOfTheObject() == "SnakeTwist") {
+	    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Right)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Up)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Left)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Up)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Right)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Down);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Down)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Down);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Down)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
+	    		if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Left)
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
+	    		return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.direction);
+	    	} if (objectOnField.nameOfTheObject() == "PieceOfSnake") {
+	    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+	    		if (pieceOfSnake.direction == Direction.Down || pieceOfSnake.direction == Direction.Up) {
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
+	    		} else {
+	    			return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
+	    		}
+	    	}
+	    	return this.images.get(objectOnField.nameOfTheObject()).get(Direction.None);
     	}
-    	
-		return this.images.get(objectOnField.toString()).get(Direction.None);
     }
     
     public Gui(JFrame frame) throws IOException {
         this.frame = frame;
         this.game = new Game();
+        this.game.startNewGame();
         this.field = this.game.field;
         this.initListOfImages();
         timer.start();
@@ -138,7 +134,7 @@ public class Gui extends JPanel implements ActionListener{
     public void paint(Graphics g) {
         for (int x = 0; x < this.field.getLengthX(); x++){
             for (int y = 0; y < this.field.getLengthY(); y++){
-                ((Graphics2D)g).drawImage(new ImageIcon("images/grass.jpg").getImage(),
+                ((Graphics2D)g).drawImage(new ImageIcon("images/EmptySpace.png").getImage(),
                 		y * cellHeight(),
                 		x * cellWidth(),
                 		cellHeight(),
@@ -148,7 +144,8 @@ public class Gui extends JPanel implements ActionListener{
         }
         for (int x = 0; x < this.field.getLengthX(); x++) {
 		    for (int y = 0; y < this.field.getLengthY(); y++) {
-		        Image img = getImage(this.field.getObjectOnField(new Coordinate(x, y)));
+		        Image img = null;
+				img = getImage(this.field.getObjectOnField(new Coordinate(x, y)));
 		        ((Graphics2D)g).drawImage(img,
 		        		y * cellHeight(),
 		        		x * cellWidth(),
@@ -157,16 +154,16 @@ public class Gui extends JPanel implements ActionListener{
 		                null);
 		    }
 		}
-}
+    }
 
 
 	@Override
     public void actionPerformed(ActionEvent e) {
-        this.game.snake.move(field);
-        if (!this.game.snake.checkEndGame(this.field)) {
+        this.game.snake.toInteractWithObject(field);
+        if (!this.game.isEndGame()) {
         	this.field.appleGenerator();
         } else {
-        	this.game = new Game();
+        	this.game.startNewGame();
         	this.field = this.game.field;
         }
         repaint();

@@ -5,13 +5,23 @@ public class Game {
 	public Field field;
 	public Snake snake;
 	
-	Game(){
+	private Coordinate getRandomFieldSize() {
 		Random random = new Random();
 		int randx = 10 + random.nextInt(20);
 		int randy = 10 + random.nextInt(20);
-		this.field = new Field(Math.max(randx, randy), Math.min(randx, randy));
-		this.field.surroundedByWall();
-		this.field.addRandomWall();
+		return new Coordinate(Math.max(randx, randy),
+							  Math.min(randx, randy));
+	}
+	
+	public boolean isEndGame() {
+		return this.snake.isPossibleToMove(this.field);
+	}
+	
+	public void startNewGame(){
+		this.field = new Field(getRandomFieldSize());
+		this.field.toPlaceTheWalls();
 		this.snake = this.field.addSnake();
 	}
+
+	
 }

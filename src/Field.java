@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Field {
 	private ObjectOnField[][] field;
-	Field(int weidht, int height){
-	    this.field = new ObjectOnField[height][weidht];
+	Field(Coordinate fieldSize){
+	    this.field = new ObjectOnField[fieldSize.y][fieldSize.x];
         for (int x = 0; x < this.getLengthX(); x++)
             for (int y = 0; y < this.getLengthY(); y++)
-                this.field[x][y] = new EmptySpace(new Coordinate(x, y), this);
+            	addObjectOnField(new EmptySpace(new Coordinate(x, y)));
 	}
 		
 	public int getLengthX() {
@@ -17,14 +17,13 @@ public class Field {
 		return this.field[0].length;
 	}
     
-	public void surroundedByWall() {
+	private void surroundedByWall() {
     	for (int i = 0; i < this.getLengthX(); i++)
     		for (int j = 0; j < this.getLengthY(); j++)
     		{
     			if (i==0 || j == 0 || i == this.getLengthX() - 1 || j == this.getLengthY() - 1)
     			{
-    				Wall wall = new Wall(new Coordinate(i, j), this);
-    				addObjectOnField(wall);
+    				addObjectOnField(new Wall(new Coordinate(i, j)));
     			}
     		}
 		
@@ -66,7 +65,7 @@ public class Field {
         return new Coordinate(randomX, randomY);
     }
     
-    public void addRandomWall() {
+    private void addRandomWall() {
     	int count = this.getLengthX() * this.getLengthY() * 2;
     	while (count > 0)
     	{
@@ -75,35 +74,23 @@ public class Field {
 	        Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
 	        if (checkEnvirons(emptyCoordinate))
 	        {
-	        	Wall wall = new Wall(emptyCoordinate, this);
-				addObjectOnField(wall);
+				addObjectOnField(new Wall(emptyCoordinate));
 	        }
 			count--;
     	}   
     }
     
-    public void appleGenerator() {
-        Random random = new Random();
-        int randomInt = random.nextInt(10);
-        if (randomInt > 8)
-        	this.addApple();
+    public void toPlaceTheWalls() {
+    	this.surroundedByWall();
+    	this.addRandomWall();
     }
-
-    public void addApple() {
-    	if (this.checkEmptySpace())
-    		return;
-    	Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
-        new Apple(emptyCoordinate, this);
+    
+    public void appleGenerator() {
+    	DisposableObject.generateDisposableObject(this);
     }
 
     public Snake addSnake() {
-    	Coordinate emptyCoordinate;
-    	do
-    	{
-    		emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
-    	}
-    	while(!(this.getObjectOnField(emptyCoordinate.getNeighborCoordinate(Direction.Left)) instanceof EmptySpace));
-    	emptyCoordinate = new Coordinate(2, 1);
+    	Coordinate emptyCoordinate = new Coordinate(2, 1);
     	return new Snake(emptyCoordinate, this);
     	
     }
@@ -113,6 +100,6 @@ public class Field {
     }
 
     public void deleteObjectOnField(Coordinate coordinate) {
-        field[coordinate.x][coordinate.y] = new EmptySpace(coordinate, this);
+    	this.addObjectOnField(new EmptySpace(coordinate));
     }
 }

@@ -1,8 +1,8 @@
-public class Apple extends DisposableObject {
-    Apple(Coordinate coordinate) {
-        super(coordinate);
-    }
-    
+public class Cherry extends DisposableObject {
+	Cherry(Coordinate coordinate) {
+		super(coordinate);
+	}
+
 	@Override
 	public void toInteractWithSnake(Snake snake, Field field) {
 		super.toInteractWithSnake(snake, field);
@@ -10,7 +10,8 @@ public class Apple extends DisposableObject {
 
 	@Override
 	public void EffectOfObject(Snake snake, Field field) {
-		snake.pushBack(field);	
+		for (int i = 0; i < 100; i++)
+			snake.pushBack(field);	
 	}
 
 	@Override
