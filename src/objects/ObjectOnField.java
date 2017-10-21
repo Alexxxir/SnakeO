@@ -20,5 +20,7 @@ public abstract class ObjectOnField {
 
     public abstract void toInteractWithSnake(Snake snake, Field field);
     
-	public abstract String nameOfTheObject();
+	public String nameOfTheObject() {
+		return null;
+	};
 }

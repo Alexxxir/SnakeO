@@ -22,9 +22,4 @@ public class Fuzzy extends DisposableObject {
 	public int getChanceOfOccurrence() {
 		return 1;
 	}
-
-	@Override
-	public String nameOfTheObject() {
-		return "Fuzzy";
-	}
 }
