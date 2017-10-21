@@ -1,4 +1,10 @@
+package game;
 import java.util.Random;
+
+import objects.DisposableObject;
+import objects.EmptySpace;
+import objects.ObjectOnField;
+import objects.Wall;
 
 public class Field {
 	private ObjectOnField[][] field;

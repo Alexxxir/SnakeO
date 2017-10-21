@@ -1,6 +1,12 @@
+package objects;
+
+import game.Coordinate;
+import game.Field;
+import game.Snake;
+
 public abstract class PenetrableObject extends ObjectOnField
 {
-	PenetrableObject(Coordinate coordinate) {
+	public PenetrableObject(Coordinate coordinate) {
 		super(coordinate);
 	}
 	

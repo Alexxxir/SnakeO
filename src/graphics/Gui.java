@@ -1,6 +1,16 @@
+package graphics;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
+
+import game.Coordinate;
+import game.Direction;
+import game.Field;
+import game.Game;
+import objects.ObjectOnField;
+import objects.PieceOfSnake;
+import objects.Wall;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -159,7 +169,7 @@ public class Gui extends JPanel implements ActionListener{
 
 	@Override
     public void actionPerformed(ActionEvent e) {
-        this.game.snake.toInteractWithObject(field);
+        this.game.snake.toInteractWithObject(this.field);
         if (!this.game.isEndGame()) {
         	this.field.appleGenerator();
         } else {

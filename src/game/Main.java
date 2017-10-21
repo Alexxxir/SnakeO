@@ -1,4 +1,8 @@
+package game;
 import javax.swing.*;
+
+import graphics.Gui;
+
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.awt.event.KeyAdapter;

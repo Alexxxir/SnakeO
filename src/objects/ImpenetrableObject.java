@@ -1,5 +1,11 @@
+package objects;
+
+import game.Coordinate;
+import game.Field;
+import game.Snake;
+
 public abstract class ImpenetrableObject extends ObjectOnField {
-	ImpenetrableObject(Coordinate coordinate) {
+	public ImpenetrableObject(Coordinate coordinate) {
 		super(coordinate);
 	}
 	

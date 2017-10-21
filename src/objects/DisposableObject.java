@@ -1,8 +1,13 @@
+package objects;
+
+import game.Coordinate;
+import game.Field;
+import game.Snake;
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class DisposableObject extends PenetrableObject {
-	DisposableObject(Coordinate coordinate) {
+	public DisposableObject(Coordinate coordinate) {
         super(coordinate);
     }
 	
@@ -15,7 +20,7 @@ public abstract class DisposableObject extends PenetrableObject {
 	public abstract void EffectOfObject(Snake snake, Field field);
 	public abstract int getChanceOfOccurrence();
 	
-	static void generateDisposableObject(Field field) {
+	public static void generateDisposableObject(Field field) {
 		ArrayList<DisposableObject> disposableObjects = new ArrayList<>();
 		
 		disposableObjects.add(new Apple(field.getRandomCoordinateWithEmptySpace()));

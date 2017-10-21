@@ -1,5 +1,11 @@
+package game;
 import java.util.LinkedList;
 import java.util.Stack;
+
+import objects.EmptySpace;
+import objects.ImpenetrableObject;
+import objects.ObjectOnField;
+import objects.PieceOfSnake;
 
 public class Snake {
     private PieceOfSnake tail;

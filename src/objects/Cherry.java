@@ -1,5 +1,11 @@
+package objects;
+
+import game.Coordinate;
+import game.Field;
+import game.Snake;
+
 public class Cherry extends DisposableObject {
-	Cherry(Coordinate coordinate) {
+	public Cherry(Coordinate coordinate) {
 		super(coordinate);
 	}
 
@@ -10,12 +16,17 @@ public class Cherry extends DisposableObject {
 
 	@Override
 	public void EffectOfObject(Snake snake, Field field) {
-		for (int i = 0; i < 100; i++)
-			snake.pushBack(field);	
+		snake.pushBack(field);	
+		snake.pushBack(field);	
 	}
 
 	@Override
 	public int getChanceOfOccurrence() {
 		return 2;
+	}
+	
+	@Override
+	public String nameOfTheObject() {
+		return "Cherry";
 	}
 }

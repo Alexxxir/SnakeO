@@ -1,5 +1,11 @@
+package objects;
+
+import game.Coordinate;
+import game.Field;
+import game.Snake;
+
 public class Apple extends DisposableObject {
-    Apple(Coordinate coordinate) {
+	public Apple(Coordinate coordinate) {
         super(coordinate);
     }
     
@@ -16,5 +22,10 @@ public class Apple extends DisposableObject {
 	@Override
 	public int getChanceOfOccurrence() {
 		return 2;
+	}
+	
+	@Override
+	public String nameOfTheObject() {
+		return "Apple";
 	}
 }
