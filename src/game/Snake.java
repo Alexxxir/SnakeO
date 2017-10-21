@@ -8,8 +8,8 @@ import objects.ObjectOnField;
 import objects.PieceOfSnake;
 
 public class Snake {
-    private PieceOfSnake tail;
-    private PieceOfSnake head;
+    public PieceOfSnake tail;
+    public PieceOfSnake head;
     private Direction direction;
     private int size;
     private Stack<PieceOfSnake> lastPart;
@@ -32,33 +32,33 @@ public class Snake {
     public void pushFront(Field field) {
         PieceOfSnake newPiece = new PieceOfSnake(
                 this.head.coordinate.getNextCoordinate(this.direction),
-                 this.direction, this.head);
+                this.direction, this.head);
         field.addObjectOnField(newPiece);
         this.head = newPiece;
         this.size += 1;
     }
-    
+
     public void pushBack(Field field) {
-    	if (!this.lastPart.isEmpty()) {
-    		if (field.getObjectOnField(this.lastPart.peek().coordinate) instanceof EmptySpace) {
-		        field.addObjectOnField(this.lastPart.peek());
-		        this.tail.lastPiece = this.lastPart.peek();
-		        this.tail = this.lastPart.pop();
-		        this.size += 1;
-    		}
-    	}
+        if (!this.lastPart.isEmpty()) {
+            if (field.getObjectOnField(this.lastPart.peek().coordinate) instanceof EmptySpace) {
+                field.addObjectOnField(this.lastPart.peek());
+                this.tail.lastPiece = this.lastPart.peek();
+                this.tail = this.lastPart.pop();
+                this.size += 1;
+            }
+        }
     }
-    
+
     public boolean isPossibleToMove(Field field) {
-    	for (Direction direction : Direction.values()) {
-    		if (!(field.getObjectOnField(this.head.coordinate.getNextCoordinate(direction)) instanceof ImpenetrableObject))
-    			return false;
-    	}
-    	return true;
+        for (Direction direction : Direction.values()) {
+            if (!(field.getObjectOnField(this.head.coordinate.getNextCoordinate(direction)) instanceof ImpenetrableObject))
+                return false;
+        }
+        return true;
     }
 
     public void popBack(Field field) {
-    	if (this.size < 4) return;
+        if (this.size < 4) return;
         this.lastPart.add(this.tail);
         this.tail.nextPiece.lastPiece = null;
         field.deleteObjectOnField(this.tail.coordinate);
@@ -75,15 +75,15 @@ public class Snake {
     }
 
     public void toInteractWithObject(Field field) {
-    	field.getObjectOnField(
-    			this.head.coordinate.getNextCoordinate(
-    					this.direction)).toInteractWithSnake(
-    							this, field);
+        field.getObjectOnField(
+                this.head.coordinate.getNextCoordinate(
+                        this.direction)).toInteractWithSnake(
+                this, field);
     }
-    
+
     public void setDirection(Direction direction) {
-    	if (this.direction.ordinal() + direction.ordinal() != 5)
-    		this.direction = direction;
+        if (this.direction.ordinal() + direction.ordinal() != 5)
+            this.direction = direction;
     }
 
 }

@@ -25,7 +25,7 @@ final public class Coordinate {
         else
             return this;
     }
-    
+
     public Coordinate getLastCoordinate(Direction direction) {
         if (direction == Direction.Left)
             return new Coordinate(this.x, this.y + 1);
