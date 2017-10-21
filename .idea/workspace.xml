@@ -2,54 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db8c6b8d-97ea-4ce1-b395-f25009a1c8d1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Apple.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Coordinate.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Direction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/EmptySpace.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Field.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Game.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/ImpenetrableObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$DownMoveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$LeftMoveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$MyTimerTask.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$PrimeThread.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$Rect.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$RightMoveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main$UpMoveAction.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/ObjectOnField.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/PenetrableObject.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/PieceOfSnake.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Snake.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Snake/Wall.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/FieldTest.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/tests/SnakeTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/Apple.png" afterPath="$PROJECT_DIR$/images/Apple.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/Cherry.png" afterPath="$PROJECT_DIR$/images/Cherry.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/EmptySpace.png" afterPath="$PROJECT_DIR$/images/EmptySpace.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/SnakeHead.png" afterPath="$PROJECT_DIR$/images/SnakeHead.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/SnakePart.png" afterPath="$PROJECT_DIR$/images/SnakePart.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/SnakeTail.png" afterPath="$PROJECT_DIR$/images/SnakeTail.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/SnakeTwist.png" afterPath="$PROJECT_DIR$/images/SnakeTwist.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/Undefined.png" afterPath="$PROJECT_DIR$/images/Undefined.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/Wall.png" afterPath="$PROJECT_DIR$/images/Wall.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/Coordinate.java" afterPath="$PROJECT_DIR$/src/game/Coordinate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/Direction.java" afterPath="$PROJECT_DIR$/src/game/Direction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/Field.java" afterPath="$PROJECT_DIR$/src/game/Field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/Game.java" afterPath="$PROJECT_DIR$/src/game/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game/Snake.java" afterPath="$PROJECT_DIR$/src/game/Snake.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/graphics/Gui.java" afterPath="$PROJECT_DIR$/src/graphics/Gui.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/Apple.java" afterPath="$PROJECT_DIR$/src/objects/Apple.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/Cherry.java" afterPath="$PROJECT_DIR$/src/objects/Cherry.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/DisposableObject.java" afterPath="$PROJECT_DIR$/src/objects/DisposableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/EmptySpace.java" afterPath="$PROJECT_DIR$/src/objects/EmptySpace.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/Fuzzy.java" afterPath="$PROJECT_DIR$/src/objects/Fuzzy.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/ImpenetrableObject.java" afterPath="$PROJECT_DIR$/src/objects/ImpenetrableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/ObjectOnField.java" afterPath="$PROJECT_DIR$/src/objects/ObjectOnField.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/PenetrableObject.java" afterPath="$PROJECT_DIR$/src/objects/PenetrableObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/PieceOfSnake.java" afterPath="$PROJECT_DIR$/src/objects/PieceOfSnake.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/objects/Wall.java" afterPath="$PROJECT_DIR$/src/objects/Wall.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.classpath" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.project" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.settings/org.eclipse.jdt.core.prefs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Coordinate.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Direction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Field.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Game.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Main$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/game/Snake.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/graphics/Gui.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/Apple.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/Cherry.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/DisposableObject.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/EmptySpace.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/Fuzzy.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/ImpenetrableObject.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/ObjectOnField.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/PenetrableObject.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/PieceOfSnake.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/objects/Wall.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/tests/FieldTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/tests/SnakeTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Apple.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Cherry.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/EmptySpace.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/SnakeHead.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/SnakePart.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/SnakeTail.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/SnakeTwist.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Undefined.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/images/Wall.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/Coordinate.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/Direction.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/Field.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/Game.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/game/Snake.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/graphics/Gui.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/Apple.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/Cherry.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/DisposableObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/EmptySpace.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/Fuzzy.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/ImpenetrableObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/ObjectOnField.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/PenetrableObject.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/PieceOfSnake.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/objects/Wall.java" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,28 +67,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="vcs.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/game/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -145,9 +131,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -326,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1508589168464</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="dfd">
+      <created>1508591156553</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1508591156553</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -334,14 +327,13 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JWT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -354,32 +346,13 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="JWT" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -411,7 +384,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -517,13 +489,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Run.java" />
-    <entry file="file://$PROJECT_DIR$/src/game/Coordinate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Run.java" />
     <entry file="file://$PROJECT_DIR$/src/objects/Apple.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -570,19 +535,18 @@
     <entry file="file://$PROJECT_DIR$/src/game/src/objects/Cherry.java" />
     <entry file="file://$PROJECT_DIR$/src/game/src/objects/PieceOfSnake.java" />
     <entry file="file://$PROJECT_DIR$/src/game/src/game/Direction.java" />
-    <entry file="file://$PROJECT_DIR$/src/game/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/tests/SnakeTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/game/Coordinate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="20">
+          <caret line="1" column="19" lean-forward="false" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/SnakeTest.java">
+    <entry file="file://$PROJECT_DIR$/src/game/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="19" column="38" lean-forward="true" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
         </state>
       </provider>
     </entry>
