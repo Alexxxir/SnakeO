@@ -2,10 +2,8 @@ package graphics;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.Timer;
-import game.Coordinate;
-import game.Direction;
-import game.Field;
-import game.Game;
+
+import game.*;
 import objects.ObjectOnField;
 import objects.PieceOfSnake;
 import java.awt.*;
@@ -23,14 +21,9 @@ import static java.awt.image.AffineTransformOp.TYPE_BILINEAR;
 
 public class Gui extends JPanel implements ActionListener{
     private Map<String, Map<Direction, Image>> images = new HashMap<String, Map<Direction, Image>>();
+    private MapOfDirections mapOfDirections;
     private final int fps = 8;
     private Timer timer = new Timer(1000/fps, this);
-    private Map<Direction, Image> createMap(Direction[] directions, Image[] images) {
-        Map<Direction, Image> map = new HashMap<Direction, Image>();
-        for (int i = 0; i < directions.length; i++)
-            map.put(directions[i], images[i]);
-        return map;
-    }
 
 
     private void initListOfImages() throws IOException {
@@ -44,6 +37,14 @@ public class Gui extends JPanel implements ActionListener{
             map.put(Direction.Right, rotateImage(imgHead, 0));
             this.images.put(typeOfPiece, map);
         }
+    }
+
+    private void initDirectionsOfSnake() {
+        this.mapOfDirections = new MapOfDirections();
+        this.mapOfDirections.addAllDirections(Direction.Down, Direction.Right, Direction.Right);
+        this.mapOfDirections.addAllDirections(Direction.Down, Direction.Left, Direction.Up);
+        this.mapOfDirections.addAllDirections(Direction.Up, Direction.Right, Direction.Down);
+        this.mapOfDirections.addAllDirections(Direction.Right, Direction.Down, Direction.Left);
     }
 
     private Image getImage(ObjectOnField objectOnField) {
@@ -63,24 +64,12 @@ public class Gui extends JPanel implements ActionListener{
                 return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.nextPiece.direction);
             } if (objectOnField.nameOfTheObject() == "SnakeTwist") {
                 PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-                if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Right)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
-                if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Up)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
-                if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Left)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
-                if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Up)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
-                if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Right)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Down);
-                if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Down)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Down);
-                if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Down)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
-                if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Left)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
-                return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.direction);
-            } if (objectOnField.nameOfTheObject() == "SnakePart") {
+                this.initDirectionsOfSnake();
+                return this.images.get(objectOnField.nameOfTheObject()).get(
+                        this.mapOfDirections.get(pieceOfSnake.nextPiece.direction, pieceOfSnake.direction)
+                );
+            }
+            if (objectOnField.nameOfTheObject() == "SnakePart") {
                 PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
                 if (pieceOfSnake.direction == Direction.Down || pieceOfSnake.direction == Direction.Up) {
                     return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
