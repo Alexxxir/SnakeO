@@ -28,6 +28,7 @@ public abstract class DisposableObject extends PenetrableObject {
         disposableObjects.add(new Apple(field.getRandomCoordinateWithEmptySpace()));
         disposableObjects.add(new Cherry(field.getRandomCoordinateWithEmptySpace()));
         disposableObjects.add(new RottenApple(field.getRandomCoordinateWithEmptySpace()));
+        disposableObjects.add(new Clock(field.getRandomCoordinateWithEmptySpace()));
 
         if (field.countEmptySpace() < (field.getLengthX() * field.getLengthX() / 10)) {
             return;

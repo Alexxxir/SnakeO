@@ -14,6 +14,18 @@ public class Snake {
     private int size;
     private Stack<PieceOfSnake> lastPart;
 
+    public Coordinate getTailCoordinate() {
+        return tail.coordinate;
+    }
+
+    public Coordinate getHeadCoordinate() {
+        return head.coordinate;
+    }
+
+    public int getLastMovesSize() {
+        return this.lastPart.size();
+    }
+
     Snake(Coordinate coordinate, Field field) {
         this.direction = Direction.Right;
         PieceOfSnake newPiece = new PieceOfSnake(coordinate.getNextCoordinate(Direction.Up), this.direction, null);
@@ -63,6 +75,14 @@ public class Snake {
         this.tail.nextPiece.lastPiece = null;
         field.deleteObjectOnField(this.tail.coordinate);
         this.tail = this.tail.nextPiece;
+        this.size -= 1;
+    }
+
+    public void popFront(Field field) {
+        if (this.size < 4) return;
+        this.head.lastPiece.nextPiece = null;
+        field.deleteObjectOnField(this.head.coordinate);
+        this.head = this.head.lastPiece;
         this.size -= 1;
     }
 

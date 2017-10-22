@@ -39,4 +39,7 @@ final public class Coordinate {
             return this;
     }
 
+    public boolean equals(Coordinate coordinate) {
+        return this.x == coordinate.x && this.y == coordinate.y;
+    }
 }
