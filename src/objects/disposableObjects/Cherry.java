@@ -22,7 +22,7 @@ public class Cherry extends DisposableObject {
 
     @Override
     public int getChanceOfOccurrence() {
-        return 2;
+        return 3;
     }
 
     @Override

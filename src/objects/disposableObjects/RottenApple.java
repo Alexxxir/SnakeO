@@ -20,7 +20,7 @@ public class RottenApple extends DisposableObject {
 
     @Override
     public int getChanceOfOccurrence() {
-        return 1;
+        return 2;
     }
 
     @Override

@@ -5,6 +5,8 @@ import game.Direction;
 import game.Field;
 import game.Snake;
 
+import java.sql.Array;
+
 public class PieceOfSnake extends ImpenetrableObject {
 
     public PieceOfSnake lastPiece;
@@ -34,6 +36,11 @@ public class PieceOfSnake extends ImpenetrableObject {
             return "SnakeHead";
         if (this.nextPiece.direction != this.direction)
             return "SnakeTwist";
-        return "PieceOfSnake";
+        return "SnakePart";
     }
+
+    public static String[] typesOfPieces = {"SnakeTail",
+                                            "SnakeHead",
+                                            "SnakeTwist",
+                                            "SnakePart"};
 }

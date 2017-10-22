@@ -34,35 +34,16 @@ public class Gui extends JPanel implements ActionListener{
 
 
     private void initListOfImages() throws IOException {
-        BufferedImage imgHead = ImageIO.read(new File("images/SnakeHead.png"));
-        Map<Direction, Image> mapSnakeHead = new HashMap<Direction, Image>();
-        mapSnakeHead.put(Direction.Down, rotateImage(imgHead, 90));
-        mapSnakeHead.put(Direction.Left, rotateImage(imgHead, 180));
-        mapSnakeHead.put(Direction.Up, rotateImage(imgHead, 270));
-        mapSnakeHead.put(Direction.Right, rotateImage(imgHead, 0));
-        this.images.put("SnakeHead", mapSnakeHead);
-
-        BufferedImage imgTail = ImageIO.read(new File("images/SnakeTail.png"));
-        Map<Direction, Image> mapSnakeTail = new HashMap<Direction, Image>();
-        mapSnakeTail.put(Direction.Up, rotateImage(imgTail, 90));
-        mapSnakeTail.put(Direction.Right, rotateImage(imgTail, 180));
-        mapSnakeTail.put(Direction.Down, rotateImage(imgTail, 270));
-        mapSnakeTail.put(Direction.Left, rotateImage(imgTail, 0));
-        this.images.put("SnakeTail", mapSnakeTail);
-
-        BufferedImage imgTwist = ImageIO.read(new File("images/SnakeTwist.png"));
-        Map<Direction, Image> mapSnakeTwist = new HashMap<Direction, Image>();
-        mapSnakeTwist.put(Direction.Down, rotateImage(imgTwist, 90));
-        mapSnakeTwist.put(Direction.Up, rotateImage(imgTwist, 180));
-        mapSnakeTwist.put(Direction.Left, rotateImage(imgTwist, 270));
-        mapSnakeTwist.put(Direction.Right, rotateImage(imgTwist, 0));
-        this.images.put("SnakeTwist", mapSnakeTwist);
-
-        BufferedImage imgPart = ImageIO.read(new File("images/SnakePart.png"));
-        Map<Direction, Image> mapSnakePart = new HashMap<Direction, Image>();
-        mapSnakePart.put(Direction.Up, rotateImage(imgPart, 90));
-        mapSnakePart.put(Direction.Right, rotateImage(imgPart, 0));
-        this.images.put("PieceOfSnake", mapSnakePart);
+        for (String typeOfPiece: PieceOfSnake.typesOfPieces) {
+            BufferedImage imgHead = ImageIO.read(
+                    new File(String.format("images/%s.png", typeOfPiece)));
+            Map<Direction, Image> map = new HashMap<Direction, Image>();
+            map.put(Direction.Down, rotateImage(imgHead, 90));
+            map.put(Direction.Left, rotateImage(imgHead, 180));
+            map.put(Direction.Up, rotateImage(imgHead, 270));
+            map.put(Direction.Right, rotateImage(imgHead, 0));
+            this.images.put(typeOfPiece, map);
+        }
     }
 
     private Image getImage(ObjectOnField objectOnField) {
@@ -87,19 +68,19 @@ public class Gui extends JPanel implements ActionListener{
                 if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Up)
                     return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
                 if (pieceOfSnake.nextPiece.direction == Direction.Down && pieceOfSnake.direction == Direction.Left)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
+                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
                 if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Up)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
+                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
                 if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Right)
                     return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Down);
                 if (pieceOfSnake.nextPiece.direction == Direction.Left && pieceOfSnake.direction == Direction.Down)
                     return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Down);
                 if (pieceOfSnake.nextPiece.direction == Direction.Right && pieceOfSnake.direction == Direction.Down)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
+                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
                 if (pieceOfSnake.nextPiece.direction == Direction.Up && pieceOfSnake.direction == Direction.Left)
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
+                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Left);
                 return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.direction);
-            } if (objectOnField.nameOfTheObject() == "PieceOfSnake") {
+            } if (objectOnField.nameOfTheObject() == "SnakePart") {
                 PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
                 if (pieceOfSnake.direction == Direction.Down || pieceOfSnake.direction == Direction.Up) {
                     return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
