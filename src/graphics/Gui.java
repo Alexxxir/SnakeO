@@ -46,6 +46,22 @@ public class Gui extends JPanel implements ActionListener{
         this.mapOfDirections.addAllDirections(Direction.Up, Direction.Right, Direction.Down);
         this.mapOfDirections.addAllDirections(Direction.Right, Direction.Down, Direction.Left);
     }
+    
+    public String nameOfTheObject(PieceOfSnake snakePart, int counter) {
+        if (snakePart.lastPiece == null) {
+        	if (counter % 2 == 0)
+        		return "SnakeTail";
+        	return "SnakeTail2";
+        }
+        if (snakePart.nextPiece == null) {
+        	if (counter % 2 == 0)
+        		return "SnakeHead";
+        	return "SnakeHead2";
+        }
+        if (snakePart.nextPiece.direction != snakePart.direction)
+            return "SnakeTwist";
+        return "SnakePart";
+    }
 
     private Image getImage(ObjectOnField objectOnField) {
         if (!(objectOnField instanceof PieceOfSnake)) {
@@ -56,28 +72,23 @@ public class Gui extends JPanel implements ActionListener{
                 return new ImageIcon(String.format("images/Undefined.png", objectOnField.nameOfTheObject())) .getImage();
             }
         } else {
+        	PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
             if (objectOnField.nameOfTheObject() == "SnakeHead") {
-                PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-                return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.direction);
+                return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);
             } if (objectOnField.nameOfTheObject() == "SnakeTail") {
-                PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-                return this.images.get(objectOnField.nameOfTheObject()).get(pieceOfSnake.nextPiece.direction);
+            	return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.nextPiece.direction);
             } if (objectOnField.nameOfTheObject() == "SnakeTwist") {
-                PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+                
                 this.initDirectionsOfSnake();
-                return this.images.get(objectOnField.nameOfTheObject()).get(
+                return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(
                         this.mapOfDirections.get(pieceOfSnake.nextPiece.direction, pieceOfSnake.direction)
                 );
             }
             if (objectOnField.nameOfTheObject() == "SnakePart") {
-                PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-                if (pieceOfSnake.direction == Direction.Down || pieceOfSnake.direction == Direction.Up) {
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Up);
-                } else {
-                    return this.images.get(objectOnField.nameOfTheObject()).get(Direction.Right);
-                }
+                return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);
+                
             }
-            return this.images.get(objectOnField.nameOfTheObject()).get(Direction.None);
+            return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(Direction.None);
         }
     }
 
@@ -133,11 +144,13 @@ public class Gui extends JPanel implements ActionListener{
         }
     }
 
+    int counter = 0;
 
     @Override
     public void actionPerformed(ActionEvent e) {
         this.game.snake.toInteractWithObject(this.field);
         if (!this.game.isEndGame()) {
+        	counter++;
             this.field.appleGenerator();
         } else {
             this.game.startNewGame();
