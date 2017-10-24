@@ -47,7 +47,7 @@ public class Gui extends JPanel implements ActionListener{
         this.mapOfDirections.addAllDirections(Direction.Right, Direction.Down, Direction.Left);
     }
     
-    public String nameOfTheObject(PieceOfSnake snakePart, int counter) {
+    public String animationNameOfTheObject(PieceOfSnake snakePart, int counter) {
         if (snakePart.lastPiece == null) {
         	if (counter % 2 == 0)
         		return "SnakeTail";
@@ -73,22 +73,19 @@ public class Gui extends JPanel implements ActionListener{
             }
         } else {
         	PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
-            if (objectOnField.nameOfTheObject() == "SnakeHead") {
-                return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);
-            } if (objectOnField.nameOfTheObject() == "SnakeTail") {
-            	return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.nextPiece.direction);
-            } if (objectOnField.nameOfTheObject() == "SnakeTwist") {
-                
+            if (objectOnField.nameOfTheObject() == "SnakeHead")
+                return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);
+            if (objectOnField.nameOfTheObject() == "SnakeTail")
+            	return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.nextPiece.direction);
+            if (objectOnField.nameOfTheObject() == "SnakeTwist") {                
                 this.initDirectionsOfSnake();
-                return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(
+                return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(
                         this.mapOfDirections.get(pieceOfSnake.nextPiece.direction, pieceOfSnake.direction)
                 );
             }
-            if (objectOnField.nameOfTheObject() == "SnakePart") {
-                return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);
-                
-            }
-            return this.images.get(nameOfTheObject(pieceOfSnake, counter)).get(Direction.None);
+            if (objectOnField.nameOfTheObject() == "SnakePart") 
+                return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);                
+            return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(Direction.None);
         }
     }
 

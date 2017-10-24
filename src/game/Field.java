@@ -23,7 +23,7 @@ public class Field {
         return this.field[0].length;
     }
 
-    private void surroundedByWall() {
+    public void surroundedByWall() {
         for (int i = 0; i < this.getLengthX(); i++)
             for (int j = 0; j < this.getLengthY(); j++)
             {
@@ -83,7 +83,7 @@ public class Field {
         return new Coordinate(randomX, randomY);
     }
 
-    private void addRandomWall() {
+    public void addRandomWall() {
         int count = this.getLengthX() * this.getLengthY() * 2;
         while (count > 0)
         {
