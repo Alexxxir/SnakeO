@@ -48,7 +48,7 @@ public class Field {
         return count;
     }
 
-    public boolean checkEnvirons(Coordinate coordinate) {
+    public boolean isEmptyEnvirons(Coordinate coordinate) {
         int count = 0;
         for (int x = coordinate.x - 1; x < coordinate.x + 2; x++)
             for (int y = coordinate.y - 1; y <  coordinate.y + 2; y++)
@@ -90,7 +90,7 @@ public class Field {
             if (this.countEmptySpace() == 0)
                 return;
             Coordinate emptyCoordinate = this.getRandomCoordinateWithEmptySpace();
-            if (checkEnvirons(emptyCoordinate))
+            if (isEmptyEnvirons(emptyCoordinate))
             {
                 addObjectOnField(new Wall(emptyCoordinate));
             }
@@ -103,21 +103,20 @@ public class Field {
         this.addRandomWall();
     }
 
-    public void appleGenerator() {
+    public void objectGenerator() {
         DisposableObject.generateDisposableObject(this);
     }
 
     public Snake addSnake() {
         Coordinate emptyCoordinate = new Coordinate(2, 1);
         return new Snake(emptyCoordinate, this);
-
     }
 
     public void addObjectOnField(ObjectOnField objectOnField) {
         field[objectOnField.coordinate.x][objectOnField.coordinate.y] = objectOnField;
     }
 
-    public void deleteObjectOnField(Coordinate coordinate) {
-        this.addObjectOnField(new EmptySpace(coordinate));
+    public void deleteObjectOnField(ObjectOnField objectOnField) {
+        this.addObjectOnField(new EmptySpace(objectOnField.coordinate));
     }
 }

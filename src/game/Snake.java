@@ -73,7 +73,7 @@ public class Snake {
         if (this.size < 4) return;
         this.lastPart.add(this.tail);
         this.tail.nextPiece.lastPiece = null;
-        field.deleteObjectOnField(this.tail.coordinate);
+        field.deleteObjectOnField(this.tail);
         this.tail = this.tail.nextPiece;
         this.size -= 1;
     }
@@ -81,7 +81,7 @@ public class Snake {
     public void popFront(Field field) {
         if (this.size < 4) return;
         this.head.lastPiece.nextPiece = null;
-        field.deleteObjectOnField(this.head.coordinate);
+        field.deleteObjectOnField(this.head);
         this.head = this.head.lastPiece;
         this.size -= 1;
     }

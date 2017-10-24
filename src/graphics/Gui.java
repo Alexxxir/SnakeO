@@ -148,7 +148,7 @@ public class Gui extends JPanel implements ActionListener{
         this.game.snake.toInteractWithObject(this.field);
         if (!this.game.isEndGame()) {
         	counter++;
-            this.field.appleGenerator();
+            this.field.objectGenerator();
         } else {
             this.game.startNewGame();
             this.field = this.game.field;
