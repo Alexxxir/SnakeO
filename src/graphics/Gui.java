@@ -24,10 +24,16 @@ public class Gui extends JPanel implements ActionListener{
     private MapOfDirections mapOfDirections;
     private final int fps = 8;
     private Timer timer = new Timer(1000/fps, this);
-
+    
+    private String[] typesOfPieces = {"SnakeTail",
+									  "SnakeTail2",
+							          "SnakeHead",
+							          "SnakeHead2",
+							          "SnakeTwist",
+							          "SnakePart"};
 
     private void initListOfImages() throws IOException {
-        for (String typeOfPiece: PieceOfSnake.typesOfPieces) {
+        for (String typeOfPiece: this.typesOfPieces) {
             BufferedImage imgHead = ImageIO.read(
                     new File(String.format("images/%s.png", typeOfPiece)));
             Map<Direction, Image> map = new HashMap<Direction, Image>();
@@ -41,10 +47,10 @@ public class Gui extends JPanel implements ActionListener{
 
     private void initDirectionsOfSnake() {
         this.mapOfDirections = new MapOfDirections();
-        this.mapOfDirections.addAllDirections(Direction.Down, Direction.Right, Direction.Right);
-        this.mapOfDirections.addAllDirections(Direction.Down, Direction.Left, Direction.Up);
-        this.mapOfDirections.addAllDirections(Direction.Up, Direction.Right, Direction.Down);
-        this.mapOfDirections.addAllDirections(Direction.Right, Direction.Down, Direction.Left);
+        this.mapOfDirections.addDoubleDirections(Direction.Down, Direction.Right, Direction.Right);
+        this.mapOfDirections.addDoubleDirections(Direction.Down, Direction.Left, Direction.Up);
+        this.mapOfDirections.addDoubleDirections(Direction.Up, Direction.Right, Direction.Down);
+        this.mapOfDirections.addDoubleDirections(Direction.Right, Direction.Down, Direction.Left);
     }
     
     public String animationNameOfTheObject(PieceOfSnake snakePart, int counter) {
@@ -90,7 +96,6 @@ public class Gui extends JPanel implements ActionListener{
     }
 
     public Gui(JFrame frame) throws IOException {
-        this.frame = frame;
         this.game = new Game();
         this.game.startNewGame();
         this.field = this.game.field;
@@ -98,14 +103,13 @@ public class Gui extends JPanel implements ActionListener{
         timer.start();
 
     }
-    private JFrame frame;
     public Game game;
     public Field field;
     private int cellWidth() {
-        return frame.getHeight() / (this.field.getLengthX() + 1);
+        return getHeight() / (this.field.getLengthX() + 1);
     }
     private int cellHeight() {
-        return frame.getWidth() / (this.field.getLengthY() + 1);
+        return getWidth() / (this.field.getLengthY() + 1);
     }
 
     private BufferedImage rotateImage(BufferedImage img, int angle){
@@ -141,7 +145,7 @@ public class Gui extends JPanel implements ActionListener{
         }
     }
 
-    int counter = 0;
+    private int counter = 0;
 
     @Override
     public void actionPerformed(ActionEvent e) {

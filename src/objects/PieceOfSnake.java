@@ -36,11 +36,4 @@ public class PieceOfSnake extends ImpenetrableObject {
             return "SnakeTwist";
         return "SnakePart";
     }
-
-    public static String[] typesOfPieces = {"SnakeTail",
-    										"SnakeTail2",
-                                            "SnakeHead",
-                                            "SnakeHead2",
-                                            "SnakeTwist",
-                                            "SnakePart"};
 }

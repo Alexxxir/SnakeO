@@ -28,6 +28,8 @@ public class Clock extends DisposableObject {
                 return;
             snake.popFront(field);
         }
+        PieceOfSnake snakeHead = (PieceOfSnake)field.getObjectOnField((snake.getHeadCoordinate()));
+    	snake.setDirection(snakeHead.direction);
     }
 
     @Override

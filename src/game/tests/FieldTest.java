@@ -1,9 +1,11 @@
-package game;
+package game.tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import game.Coordinate;
+import game.Field;
 import objects.EmptySpace;
 import objects.PieceOfSnake;
 import objects.Wall;
@@ -12,13 +14,12 @@ public class FieldTest {
 
 	@Test
 	public void testS() {
-		Field field = new Field(new Coordinate(2,2));
-		field.surroundedByWall();
-		for (int i = 0; i < field.getLengthX(); i++)
-		{
-			for (int j = 0; j < field.getLengthY(); j++)
-				assertTrue(field.getObjectOnField(new Coordinate(i,j)) instanceof Wall);
-		}
+		Field field = new Field(new Coordinate(3,3));
+		field.surroundByWall();
+		assertTrue(field.getObjectOnField(new Coordinate(0,0)) instanceof Wall);
+		assertTrue(field.getObjectOnField(new Coordinate(2,2)) instanceof Wall);
+		assertTrue(field.getObjectOnField(new Coordinate(0,1)) instanceof Wall);
+		assertFalse(field.getObjectOnField(new Coordinate(1,1)) instanceof Wall);
 	}
 	
 	@Test
@@ -30,7 +31,7 @@ public class FieldTest {
 	@Test
 	public void testEnvirions() {
 		Field field = new Field(new Coordinate(5, 5));
-		field.surroundedByWall();
+		field.surroundByWall();
 		assertTrue(field.isEmptyEnvirons(new Coordinate(2, 2)));
 	}
 	
@@ -43,7 +44,7 @@ public class FieldTest {
 	@Test
 	public void testAddRandomWall() {
 		Field field = new Field(new Coordinate(5,5));
-		field.surroundedByWall();
+		field.surroundByWall();
 		field.addRandomWall();
 		assertTrue(field.getObjectOnField(new Coordinate(2, 2)) instanceof Wall);
 	}
@@ -73,3 +74,6 @@ public class FieldTest {
 	}
 	
 }
+
+
+

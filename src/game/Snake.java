@@ -1,10 +1,8 @@
 package game;
-import java.util.LinkedList;
 import java.util.Stack;
 
 import objects.EmptySpace;
 import objects.ImpenetrableObject;
-import objects.ObjectOnField;
 import objects.PieceOfSnake;
 
 public class Snake {
@@ -26,7 +24,7 @@ public class Snake {
         return this.lastPart.size();
     }
 
-    Snake(Coordinate coordinate, Field field) {
+    public Snake(Coordinate coordinate, Field field) {
         this.direction = Direction.Right;
         PieceOfSnake newPiece = new PieceOfSnake(coordinate.getNextCoordinate(Direction.Up), this.direction, null);
         field.addObjectOnField(newPiece);
@@ -64,9 +62,9 @@ public class Snake {
     public boolean isPossibleToMove(Field field) {
         for (Direction direction : Direction.values()) {
             if (!(field.getObjectOnField(this.head.coordinate.getNextCoordinate(direction)) instanceof ImpenetrableObject))
-                return false;
+                return true;
         }
-        return true;
+        return false;
     }
 
     public void popBack(Field field) {
@@ -84,14 +82,6 @@ public class Snake {
         field.deleteObjectOnField(this.head);
         this.head = this.head.lastPiece;
         this.size -= 1;
-    }
-
-    private ObjectOnField getNeighborObject(Field field) {
-        return field.getObjectOnField(this.head.coordinate.getNextCoordinate(this.direction));
-    }
-
-    public boolean isInFrontWall(Field field) {
-        return this.getNeighborObject(field) instanceof ImpenetrableObject;
     }
 
     public void toInteractWithObject(Field field) {

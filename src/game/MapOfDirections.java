@@ -20,7 +20,7 @@ public class MapOfDirections {
         this.map.get(value)[1].add(keySecond);
     }
 
-    public void addAllDirections(Direction keyFirst,
+    public void addDoubleDirections(Direction keyFirst,
                                  Direction keySecond,
                                  Direction value) {
         this.add(keyFirst, keySecond, value);

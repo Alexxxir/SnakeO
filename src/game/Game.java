@@ -15,7 +15,7 @@ public class Game {
     }
 
     public boolean isEndGame() {
-        return this.snake.isPossibleToMove(this.field);
+        return !this.snake.isPossibleToMove(this.field);
     }
 
     public void startNewGame(){

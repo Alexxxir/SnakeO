@@ -8,7 +8,7 @@ import objects.Wall;
 
 public class Field {
     private ObjectOnField[][] field;
-    Field(Coordinate fieldSize){
+    public Field(Coordinate fieldSize){
         this.field = new ObjectOnField[fieldSize.y][fieldSize.x];
         for (int x = 0; x < this.getLengthX(); x++)
             for (int y = 0; y < this.getLengthY(); y++)
@@ -23,7 +23,7 @@ public class Field {
         return this.field[0].length;
     }
 
-    public void surroundedByWall() {
+    public void surroundByWall() {
         for (int i = 0; i < this.getLengthX(); i++)
             for (int j = 0; j < this.getLengthY(); j++)
             {
@@ -99,12 +99,12 @@ public class Field {
     }
 
     public void toPlaceTheWalls() {
-        this.surroundedByWall();
+        this.surroundByWall();
         this.addRandomWall();
     }
 
     public void objectGenerator() {
-        DisposableObject.generateDisposableObject(this);
+    	GeneratorOfDisposableObject.generateDisposableObject(this);
     }
 
     public Snake addSnake() {
