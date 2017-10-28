@@ -26,7 +26,7 @@ public class Snake {
 
     public Snake(Coordinate coordinate, Field field) {
         this.direction = Direction.Right;
-        PieceOfSnake newPiece = new PieceOfSnake(coordinate.getNextCoordinate(Direction.Up), this.direction, null);
+        PieceOfSnake newPiece = new PieceOfSnake(coordinate.getNextCoordinate(Direction.Right), this.direction, null);
         field.addObjectOnField(newPiece);
         this.tail = newPiece;
         this.head = newPiece;

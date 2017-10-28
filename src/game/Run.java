@@ -27,7 +27,7 @@ public class Run{
     public static void main(String args[]) throws IOException{
         JFrame frame = new JFrame("Snake");
         frame.setSize(720, 720);
-        Gui gui = new Gui(frame);
+        Gui gui = new Gui();
         frame.add(gui);
         createControls(frame, gui);
         frame.setVisible(true);

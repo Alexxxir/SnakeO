@@ -23,6 +23,8 @@ public class Clock extends DisposableObject {
         int rnd = random.nextInt(snake.getLastMovesSize());
         for (int i = 0; i < rnd; i++) {
             Coordinate lastTail = snake.getTailCoordinate();
+            PieceOfSnake pieceOfSnake = (PieceOfSnake)field.getObjectOnField(snake.getHeadCoordinate());
+            snake.setDirection(pieceOfSnake.direction);
             snake.pushBack(field);
             if (lastTail == snake.getTailCoordinate())
                 return;

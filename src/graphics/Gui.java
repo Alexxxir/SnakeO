@@ -95,7 +95,7 @@ public class Gui extends JPanel implements ActionListener{
         }
     }
 
-    public Gui(JFrame frame) throws IOException {
+    public Gui() throws IOException {
         this.game = new Game();
         this.game.startNewGame();
         this.field = this.game.field;
@@ -105,11 +105,11 @@ public class Gui extends JPanel implements ActionListener{
     }
     public Game game;
     public Field field;
-    private int cellWidth() {
-        return getHeight() / (this.field.getLengthX() + 1);
-    }
     private int cellHeight() {
-        return getWidth() / (this.field.getLengthY() + 1);
+        return getHeight() / (this.field.getLengthY());
+    }
+    private int cellWidth() {
+        return getWidth() / (this.field.getLengthX());
     }
 
     private BufferedImage rotateImage(BufferedImage img, int angle){
@@ -124,10 +124,10 @@ public class Gui extends JPanel implements ActionListener{
         for (int x = 0; x < this.field.getLengthX(); x++){
             for (int y = 0; y < this.field.getLengthY(); y++){
                 ((Graphics2D)g).drawImage(new ImageIcon("images/EmptySpace.png").getImage(),
-                        y * cellHeight(),
                         x * cellWidth(),
-                        cellHeight(),
+                        y * cellHeight(),
                         cellWidth(),
+                        cellHeight(),
                         null);
             }
         }
@@ -136,10 +136,10 @@ public class Gui extends JPanel implements ActionListener{
                 Image img = null;
                 img = getImage(this.field.getObjectOnField(new Coordinate(x, y)));
                 ((Graphics2D)g).drawImage(img,
-                        y * cellHeight(),
                         x * cellWidth(),
-                        cellHeight(),
+                        y * cellHeight(),
                         cellWidth(),
+                        cellHeight(),
                         null);
             }
         }

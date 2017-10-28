@@ -9,7 +9,7 @@ import objects.Wall;
 public class Field {
     private ObjectOnField[][] field;
     public Field(Coordinate fieldSize){
-        this.field = new ObjectOnField[fieldSize.y][fieldSize.x];
+        this.field = new ObjectOnField[fieldSize.x][fieldSize.y];
         for (int x = 0; x < this.getLengthX(); x++)
             for (int y = 0; y < this.getLengthY(); y++)
                 addObjectOnField(new EmptySpace(new Coordinate(x, y)));
@@ -108,7 +108,7 @@ public class Field {
     }
 
     public Snake addSnake() {
-        Coordinate emptyCoordinate = new Coordinate(2, 1);
+        Coordinate emptyCoordinate = new Coordinate(2, 2);
         return new Snake(emptyCoordinate, this);
     }
 
