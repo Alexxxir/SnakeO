@@ -108,7 +108,7 @@ public class Field {
     }
 
     public Snake addSnake() {
-        Coordinate emptyCoordinate = new Coordinate(2, 2);
+        Coordinate emptyCoordinate = new Coordinate(1, 1);
         return new Snake(emptyCoordinate, this);
     }
 
