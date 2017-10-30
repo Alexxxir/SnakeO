@@ -9,8 +9,8 @@ import objects.disposableObjects.Clock;
 import objects.disposableObjects.DisposableObject;
 import objects.disposableObjects.RottenApple;
 
-public class GeneratorOfDisposableObject {
-	public static void generateDisposableObject(Field field) {
+class GeneratorOfDisposableObject {
+	static void generateDisposableObject(Field field) {
         ArrayList<DisposableObject> disposableObjects = new ArrayList<>();
 
         disposableObjects.add(new Apple(field.getRandomCoordinateWithEmptySpace()));
