@@ -20,12 +20,12 @@ import static java.awt.image.AffineTransformOp.TYPE_BILINEAR;
 
 
 public class Gui extends JPanel implements ActionListener{
-    private Map<String, Map<Direction, Image>> images = new HashMap<String, Map<Direction, Image>>();
-    private MapOfDirections mapOfDirections;
+
     private final int fps = 8;
     private Timer timer = new Timer(1000/fps, this);
+	private GetImage paintImage;
     
-    private String[] typesOfPieces = {"SnakeTail",
+ /*   private String[] typesOfPieces = {"SnakeTail",
 									  "SnakeTail2",
 							          "SnakeHead",
 							          "SnakeHead2",
@@ -43,17 +43,17 @@ public class Gui extends JPanel implements ActionListener{
             map.put(Direction.Right, rotateImage(imgHead, 0));
             this.images.put(typeOfPiece, map);
         }
-    }
+    } */
 
-    private void initDirectionsOfSnake() {
+  /*  private void initDirectionsOfSnake() {
         this.mapOfDirections = new MapOfDirections();
         this.mapOfDirections.addDoubleDirections(Direction.Down, Direction.Right, Direction.Right);
         this.mapOfDirections.addDoubleDirections(Direction.Down, Direction.Left, Direction.Up);
         this.mapOfDirections.addDoubleDirections(Direction.Up, Direction.Right, Direction.Down);
         this.mapOfDirections.addDoubleDirections(Direction.Right, Direction.Down, Direction.Left);
-    }
+    } */
     
-    public String animationNameOfTheObject(PieceOfSnake snakePart, int counter) {
+ /*   public String animationNameOfTheObject(PieceOfSnake snakePart, int counter) {
         if (snakePart.lastPiece == null) {
         	if (counter % 2 == 0)
         		return "SnakeTail";
@@ -67,10 +67,21 @@ public class Gui extends JPanel implements ActionListener{
         if (snakePart.nextPiece.direction != snakePart.direction)
             return "SnakeTwist";
         return "SnakePart";
-    }
+    } */
 
     private Image getImage(ObjectOnField objectOnField) {
-        if (!(objectOnField instanceof PieceOfSnake)) {
+    	if (objectOnField instanceof PieceOfSnake) 
+    	{
+    		PieceOfSnake pieceOfSnake = (PieceOfSnake) objectOnField;
+    		return paintImage.images.get(paintImage.animationNameOfTheObjectSnake(objectOnField.nameOfTheObject(), counter)).get(pieceOfSnake.direction);
+    	}
+    	else
+    	{
+    		String obj = objectOnField.nameOfTheObject();
+    		return paintImage.images.get(paintImage.animationNameOfTheObjectOther(obj, counter)).get(Direction.None);
+    	}
+    	
+     /*   if (!(objectOnField instanceof PieceOfSnake)) {
             Image image = new ImageIcon(String.format("images/%s.png", objectOnField.nameOfTheObject())) .getImage();
             if (image.getHeight(null) != -1) {
                 return image;
@@ -92,14 +103,16 @@ public class Gui extends JPanel implements ActionListener{
             if (objectOnField.nameOfTheObject() == "SnakePart") 
                 return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(pieceOfSnake.direction);                
             return this.images.get(animationNameOfTheObject(pieceOfSnake, counter)).get(Direction.None);
-        }
+        } */
     }
 
     public Gui() throws IOException {
+    	this.paintImage = new GetImage();
         this.game = new Game();
         this.game.startNewGame();
         this.field = this.game.field;
-        this.initListOfImages();
+        paintImage.initAnimation();
+        paintImage.initDirectionsOfSnake();
         timer.start();
 
     }
@@ -110,14 +123,6 @@ public class Gui extends JPanel implements ActionListener{
     }
     private int cellWidth() {
         return getWidth() / (this.field.getLengthX());
-    }
-
-    private BufferedImage rotateImage(BufferedImage img, int angle){
-        int x = img.getWidth(null) / 2;
-        int y = img.getHeight(null) / 2;
-        AffineTransform tx = AffineTransform.getRotateInstance(Math.toRadians(angle), x, y);
-        AffineTransformOp op = new AffineTransformOp(tx, TYPE_BILINEAR);
-        return op.filter(img, null);
     }
 
     public void paint(Graphics g) {
