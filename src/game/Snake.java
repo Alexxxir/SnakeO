@@ -31,7 +31,7 @@ public class Snake {
         this.tail = newPiece;
         this.head = newPiece;
         this.size = 1;
-        this.lastPart = new Stack<PieceOfSnake>();
+        this.lastPart = new Stack<>();
         this.pushFront(field);
     }
 

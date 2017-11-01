@@ -22,9 +22,9 @@ class GetImage {
         this.initDirectionsOfSnake();
     }
 
-	private Map<String, String[]> animationImages = new HashMap<String, String[]>();
+	private Map<String, String[]> animationImages = new HashMap<>();
 
-	private Map<String, Map<Direction, Image>> images = new HashMap<String, Map<Direction, Image>>();
+	private Map<String, Map<Direction, Image>> images = new HashMap<>();
     private MapOfDirections mapOfDirections = new MapOfDirections();
 
     private Direction chooseSnakePieceTurn(PieceOfSnake pieceOfSnake) {
@@ -77,25 +77,35 @@ class GetImage {
         animationImages.put("Wall", new String[] {"Wall0"});
 		animationImages.put("RottenApple", new String[] {"RottenApple0"});
 		animationImages.put("EmptySpace", new String[] {"EmptySpace0"});
-		animationImages.put("Clock", new String[] {"Clock0"});
+		animationImages.put("Clock", new String[] {"Clock0", "Clock1"});
 		animationImages.put("Cherry", new String[] {"Cherry0"});
-		animationImages.put("Apple", new String[] {"Apple0"});
+		animationImages.put("Apple", new String[] {"Apple0", "Apple1"});
         animationImages.put("Undefined", new String[] {"Undefined0"});
-		
-		for (String ObjectsNames: animationImages.keySet()) {
-			for (String ObjectsAnimation: animationImages.get(ObjectsNames)) {
+
+		BufferedImage undefined = null;
+		try {
+			undefined = ImageIO.read(new File("images/Undefined0.png"));
+		} catch (IOException a) {}
+
+		for (String objectsNames: animationImages.keySet()) {
+			for (String objectsAnimation: animationImages.get(objectsNames)) {
 	            BufferedImage image;
 				try {
                     image = ImageIO.read(
-					        new File(String.format("images/%s.png", ObjectsAnimation)));
-					Map<Direction, Image> map = new HashMap<Direction, Image>();
+					        new File(String.format("images/%s.png", objectsAnimation)));
+					Map<Direction, Image> map = new HashMap<>();
 		            map.put(Direction.Down, rotateImage(image, 90));
 		            map.put(Direction.Left, rotateImage(image, 180));
 		            map.put(Direction.Up, rotateImage(image, 270));
 		            map.put(Direction.Right, rotateImage(image, 0));
-		            this.images.put(ObjectsAnimation, map);
+		            this.images.put(objectsAnimation, map);
 				} catch (IOException e) {
-					System.out.println(e);
+					Map<Direction, Image> map = new HashMap<>();
+					map.put(Direction.Down, rotateImage(undefined, 90));
+					map.put(Direction.Left, rotateImage(undefined, 180));
+					map.put(Direction.Up, rotateImage(undefined, 270));
+					map.put(Direction.Right, rotateImage(undefined, 0));
+					this.images.put(objectsAnimation, map);
 				}
 	        }
 		}
