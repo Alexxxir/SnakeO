@@ -11,13 +11,13 @@ public class Gui extends JPanel implements ActionListener{
 
     private final int fps = 8;
     private Timer timer = new Timer(1000/fps, this);
-    private GetImage paintImage;
+    private ImageGetter paintImage;
     public Game game;
 
-    public Gui() {
+    public Gui(ImageGetter paintImage) {
         this.game = new Game();
         this.game.startNewGame();
-        this.paintImage = new GetImage();
+        this.paintImage = paintImage;
         this.timer.start();
 
     }
