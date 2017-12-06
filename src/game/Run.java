@@ -1,6 +1,7 @@
 package game;
 import javax.swing.*;
 
+import graphics.ImageGetter;
 import graphics.Gui;
 
 import java.awt.event.KeyEvent;
@@ -27,7 +28,13 @@ public class Run{
     public static void main(String args[]) throws IOException{
         JFrame frame = new JFrame("Snake");
         frame.setSize(720, 720);
-        Gui gui = new Gui();
+        // создать и сконфигурировать ImageGetter и передать его в GUI
+        ImageGetter paintImage = new ImageGetter(
+        		//new SnakePieceDrawer(), 	
+        		//new CycledAnimatedImageDrawer(Apple.class, 5),
+        		//new RandomAnimatedImageDrawer(Wall.class),
+        		);
+        Gui gui = new Gui(paintImage);
         frame.add(gui);
         createControls(frame, gui);
         frame.setVisible(true);
